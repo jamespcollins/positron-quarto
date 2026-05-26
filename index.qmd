@@ -469,10 +469,7 @@ Slides built with [Quarto](https://quarto.org) + [Positron](https://positron.pos
 
 ### Data Inspection
 - QGIS (visual review & QA/QC)
-```bash
-module load apptainer
-apptainer exec /nas/longleaf/containers/qgis/3.99/image/qgis.simg qgis
-```
+
 
 ## Setting up Positron
 Edit your ssh file on your local machine:
@@ -480,6 +477,8 @@ Edit your ssh file on your local machine:
 nano ~/.ssh/config
 ```
 Copy/Paste replacing `YOUR_ONYEN` with your actual ONYEN:
+
+## Setting up Positron (cont.)
 ```bash
 Host longleaf
   HostName longleaf.unc.edu
@@ -506,7 +505,13 @@ Login to longleaf from your terminal:
 ```bash
 ssh longleaf
 ```
-Create a SLURM script for Positron sessions (type: nano interactive) and paste:
+Create a SALLOC script for Positron sessions:
+```bash
+nano interactive
+```
+Then copy/paste the following:
+
+## Longleaf Integration (cont.)
 ```bash
 #!/bin/bash
 # Adjust --cpus-per-task if using parallel processing
