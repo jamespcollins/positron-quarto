@@ -609,3 +609,144 @@ Go to your GitHub repository and navigate to Settings > Pages and your live site
 
 
 
+# Using GitHub + Positron for task management
+
+## What are we going to learn?
+
+1. Git branches, GitHub issues, and GitHub pull requests
+2. How to associate branched code changes with issues in Positron
+3. How to integrate issues + branches into manuscript drafting
+
+## Recap
+
+::: {.list-table}
+
+- - name
+  - function
+  - location
+
+- - Git
+  - Reads changes to text files, keeps track of commits and **branches**
+  - Local machine
+
+- - GitHub
+  - Stores Git repositories (code + history) with interfaces for **issues and pull requests**
+  - Online
+
+- - Positron
+  - Integrated development environment (IDE) for R and Python that integrates with git and GitHub
+  - Local machine, Longleaf Open On Demand
+
+:::
+
+## Branches
+
+- **Branches**, tracked by Git, are an useful way to iterative and non-destructively develop code
+
+
+::: {.columns}
+
+::: {.column}
+
+```bash
+git branch develop
+git checkout develop
+git commit ...
+git commit ...
+git checkout main
+git merge develop
+```
+
+:::
+
+::: {.column}
+
+```{mermaid}
+gitGraph
+   commit
+   commit
+   branch develop
+   checkout develop
+   commit
+   commit
+   checkout main
+   merge develop
+   commit
+   commit
+```
+
+![](assets/screenshots/git-branch.png)
+
+:::
+
+:::
+
+
+## Issues
+
+- **Issues**, tracked by GitHub, let you create todos with detailed logs, comments, and attributes
+- Each issue gets a number, e.g., `#8`
+- Specify assignees, labels, milestones (e.g., sets of issues), relationships (e.g., blocking issues)
+- Create sub-issues for complex steps
+- Use templates ([example](https://github.com/jamespcollins/quarto_template/issues))
+- [Example issue](https://github.com/jamespcollins/down-east-flooding-tolerance/issues/8)
+
+
+## Pull requests (PRs)
+
+- **Pull requests**, tracked by Git and enhanced by GitHub, are proposals for merging branches
+- Valuable for collaboration: facilitates discussion and review of changes
+- Look similar to issues (numbered, comments, logs, attributes)
+- Can create rules on GitHub (e.g., requiring review)
+- [Example PR](https://github.com/jamespcollins/conus_h2a_housing/pull/81)
+
+
+## Workflow
+
+1. Create an **issue** to propose a modification
+2. Create a **branch** off default (e.g., `main`)
+3. Checkout and commit changes to branch
+4. Publish branch to GitHub
+5. Create a **pull request**
+6. Review changes and merge pull request
+
+
+## Associating branches with issues
+
+- Branch naming practice: `username/issue#` notation, e.g., `jamespcollins/issue8`
+- Associate branch and commits with issue by adding the issue `#` in commit messages
+  - Issue numbers will also auto-link in GitHub issue or PR comments.
+  - These associations appear in the issue/PR log
+
+## Integrating with Positron
+
+Positron can manage many of these steps for you<br>
+via the "GitHub Pull Requests" extension
+
+- View of issues and PRs
+- Creating, naming, and checking out issue branches
+- Creating, reviewing, and merging pull requests
+
+_demo_
+
+## Integrating with Quarto manuscript writing
+
+- Use issue templates to remind you to update the manuscript (e.g., `index.qmd`)
+- Make manuscript updates in the same branch as your analysis code updates
+
+[_demo_](https://github.com/jamespcollins/conus_h2a_housing/issues/85)
+
+## Tips
+
+- Use Milestones to set deadlines for bundles of issues that accomplish a substantial step
+- Set repository rules to require PRs to change your default branch
+- Use more complex branching, especially for sub-issues, by branching off an existing main issue branch
+  - Positron setting for how to create new branches `githubIssues.workingBaseBranch`
+- Issues can feed into Project views for visualization (e.g., Gantt) and custom attributes ([example](https://github.com/users/jamespcollins/projects/2/views/4))
+- Remember, issues and PRs are subject to the repository visibility
+
+## Take-aways
+
+1. Git branches, GitHub issues, and GitHub pull requests
+2. Positron makes it easy to associate issues with branched code changes
+3. You can use issues to break your analysis and drafting into small chunks and manage collaborative work

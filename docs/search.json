@@ -165,25 +165,39 @@
     "href": "index.html#workflow-overview",
     "title": "Reproducible Research with Quarto",
     "section": "Workflow Overview",
-    "text": "Workflow Overview\nDevelopment Environment\n\nPreferred: Positron IDE + Quarto\n\nInstall Positron IDE\nI recommend watching this Quarto video before going any further.\n\nAlternative: RStudio Sandbox (GDAL pre-loaded) + Quarto\n\nRequires a request to IT for access and setup\n\n\nData Inspection\n\nQGIS (visual review & QA/QC)\n\nmodule load apptainer\napptainer exec /nas/longleaf/containers/qgis/3.99/image/qgis.simg qgis"
+    "text": "Workflow Overview\nDevelopment Environment\n\nPreferred: Positron IDE + Quarto\n\nInstall Positron IDE\nI recommend watching this Quarto video before going any further.\n\nAlternative: RStudio Sandbox (GDAL pre-loaded) + Quarto\n\nRequires a request to IT for access and setup\n\n\nData Inspection\n\nQGIS (visual review & QA/QC)"
   },
   {
     "objectID": "index.html#setting-up-positron",
     "href": "index.html#setting-up-positron",
     "title": "Reproducible Research with Quarto",
     "section": "Setting up Positron",
-    "text": "Setting up Positron\nEdit your ssh file on your local machine:\nnano ~/.ssh/config\nCopy/Paste replacing YOUR_ONYEN with your actual ONYEN:\nHost longleaf\n  HostName longleaf.unc.edu\n  User YOUR_ONYEN\n  ServerAliveInterval 60\n  ServerAliveCountMax 3\n\nHost b* c* g* t*\n  User YOUR_ONYEN\n  ProxyJump longleaf\n  ServerAliveInterval 60\n  ServerAliveCountMax 3\n\nHost *.ll.unc.edu\n  User YOUR_ONYEN\n  ProxyJump longleaf\n  ServerAliveInterval 60\n  ServerAliveCountMax 3\nSave and exit the file (Ctrl + O, Enter, Ctrl + X)."
+    "text": "Setting up Positron\nEdit your ssh file on your local machine:\nnano ~/.ssh/config\nCopy/Paste replacing YOUR_ONYEN with your actual ONYEN:"
+  },
+  {
+    "objectID": "index.html#setting-up-positron-cont.",
+    "href": "index.html#setting-up-positron-cont.",
+    "title": "Reproducible Research with Quarto",
+    "section": "Setting up Positron (cont.)",
+    "text": "Setting up Positron (cont.)\nHost longleaf\n  HostName longleaf.unc.edu\n  User YOUR_ONYEN\n  ServerAliveInterval 60\n  ServerAliveCountMax 3\n\nHost b* c* g* t*\n  User YOUR_ONYEN\n  ProxyJump longleaf\n  ServerAliveInterval 60\n  ServerAliveCountMax 3\n\nHost *.ll.unc.edu\n  User YOUR_ONYEN\n  ProxyJump longleaf\n  ServerAliveInterval 60\n  ServerAliveCountMax 3\nSave and exit the file (Ctrl + O, Enter, Ctrl + X)."
   },
   {
     "objectID": "index.html#longleaf-integration",
     "href": "index.html#longleaf-integration",
     "title": "Reproducible Research with Quarto",
     "section": "Longleaf Integration",
-    "text": "Longleaf Integration\nLogin to longleaf from your terminal:\nssh longleaf\nCreate a SLURM script for Positron sessions (type: nano interactive) and paste:\n#!/bin/bash\n# Adjust --cpus-per-task if using parallel processing\n# Adjust --mem based on your needs\n\nsalloc \\\n  --job-name=positron \\\n  --cpus-per-task=1 \\ \n  --mem=70GB \\ \n  --nodes=1 \\\n  --ntasks=1 \\\n  --time=08:00:00 \\\n  --partition=interact\nSave and exit the file (Ctrl + O, Enter, Ctrl + X)."
+    "text": "Longleaf Integration\nLogin to longleaf from your terminal:\nssh longleaf\nCreate a SALLOC script for Positron sessions:\nnano interactive\nThen copy/paste the following:"
   },
   {
     "objectID": "index.html#longleaf-integration-cont.",
     "href": "index.html#longleaf-integration-cont.",
+    "title": "Reproducible Research with Quarto",
+    "section": "Longleaf Integration (cont.)",
+    "text": "Longleaf Integration (cont.)\n#!/bin/bash\n# Adjust --cpus-per-task if using parallel processing\n# Adjust --mem based on your needs\n\nsalloc \\\n  --job-name=positron \\\n  --cpus-per-task=1 \\ \n  --mem=70GB \\ \n  --nodes=1 \\\n  --ntasks=1 \\\n  --time=08:00:00 \\\n  --partition=interact\nSave and exit the file (Ctrl + O, Enter, Ctrl + X)."
+  },
+  {
+    "objectID": "index.html#longleaf-integration-cont.-1",
+    "href": "index.html#longleaf-integration-cont.-1",
     "title": "Reproducible Research with Quarto",
     "section": "Longleaf Integration (cont.)",
     "text": "Longleaf Integration (cont.)\nSubmit the SLURM script to start an interactive session:\nbash interactive\nYou will see something like this:\nsalloc: Pending job allocation 31348688\nsalloc: job 31348688 queued and waiting for resources\nsalloc: job 31348688 has been allocated resources\nsalloc: Granted job allocation 31348688\nsalloc: Nodes c0402 are ready for job\nCopy the node name (e.g., c0402)"
@@ -229,5 +243,82 @@
     "title": "Reproducible Research with Quarto",
     "section": "Website Publishing and Sharing",
     "text": "Website Publishing and Sharing\nBefore publishing, make sure to commit and push your changes to GitHub.\nTo publish your manuscript as a website, run the following command in your terminal:\nquarto publish gh-pages\nGo to your GitHub repository and navigate to Settings &gt; Pages and your live site should be listed."
+  },
+  {
+    "objectID": "index.html#what-are-we-going-to-learn",
+    "href": "index.html#what-are-we-going-to-learn",
+    "title": "Reproducible Research with Quarto",
+    "section": "What are we going to learn?",
+    "text": "What are we going to learn?\n\nGit branches, GitHub issues, and GitHub pull requests\nHow to associate branched code changes with issues in Positron\nHow to integrate issues + branches into manuscript drafting"
+  },
+  {
+    "objectID": "index.html#recap",
+    "href": "index.html#recap",
+    "title": "Reproducible Research with Quarto",
+    "section": "Recap",
+    "text": "Recap\n\n\n\nname\nfunction\nlocation\n\n\n\n\nGit\nReads changes to text files, keeps track of commits and branches\nLocal machine\n\n\nGitHub\nStores Git repositories (code + history) with interfaces for issues and pull requests\nOnline\n\n\nPositron\nIntegrated development environment (IDE) for R and Python that integrates with git and GitHub\nLocal machine, Longleaf Open On Demand"
+  },
+  {
+    "objectID": "index.html#branches",
+    "href": "index.html#branches",
+    "title": "Reproducible Research with Quarto",
+    "section": "Branches",
+    "text": "Branches\n\nBranches, tracked by Git, are an useful way to iterative and non-destructively develop code\n\n\n\ngit branch develop\ngit checkout develop\ngit commit ...\ngit commit ...\ngit checkout main\ngit merge develop"
+  },
+  {
+    "objectID": "index.html#issues",
+    "href": "index.html#issues",
+    "title": "Reproducible Research with Quarto",
+    "section": "Issues",
+    "text": "Issues\n\nIssues, tracked by GitHub, let you create todos with detailed logs, comments, and attributes\nEach issue gets a number, e.g., #8\nSpecify assignees, labels, milestones (e.g., sets of issues), relationships (e.g., blocking issues)\nCreate sub-issues for complex steps\nUse templates (example)\nExample issue"
+  },
+  {
+    "objectID": "index.html#pull-requests-prs",
+    "href": "index.html#pull-requests-prs",
+    "title": "Reproducible Research with Quarto",
+    "section": "Pull requests (PRs)",
+    "text": "Pull requests (PRs)\n\nPull requests, tracked by Git and enhanced by GitHub, are proposals for merging branches\nValuable for collaboration: facilitates discussion and review of changes\nLook similar to issues (numbered, comments, logs, attributes)\nCan create rules on GitHub (e.g., requiring review)\nExample PR"
+  },
+  {
+    "objectID": "index.html#workflow",
+    "href": "index.html#workflow",
+    "title": "Reproducible Research with Quarto",
+    "section": "Workflow",
+    "text": "Workflow\n\nCreate an issue to propose a modification\nCreate a branch off default (e.g., main)\nCheckout and commit changes to branch\nPublish branch to GitHub\nCreate a pull request\nReview changes and merge pull request"
+  },
+  {
+    "objectID": "index.html#associating-branches-with-issues",
+    "href": "index.html#associating-branches-with-issues",
+    "title": "Reproducible Research with Quarto",
+    "section": "Associating branches with issues",
+    "text": "Associating branches with issues\n\nBranch naming practice: username/issue# notation, e.g., jamespcollins/issue8\nAssociate branch and commits with issue by adding the issue # in commit messages\n\nIssue numbers will also auto-link in GitHub issue or PR comments.\nThese associations appear in the issue/PR log"
+  },
+  {
+    "objectID": "index.html#integrating-with-positron",
+    "href": "index.html#integrating-with-positron",
+    "title": "Reproducible Research with Quarto",
+    "section": "Integrating with Positron",
+    "text": "Integrating with Positron\nPositron can manage many of these steps for you via the “GitHub Pull Requests” extension\n\nView of issues and PRs\nCreating, naming, and checking out issue branches\nCreating, reviewing, and merging pull requests\n\ndemo"
+  },
+  {
+    "objectID": "index.html#integrating-with-quarto-manuscript-writing",
+    "href": "index.html#integrating-with-quarto-manuscript-writing",
+    "title": "Reproducible Research with Quarto",
+    "section": "Integrating with Quarto manuscript writing",
+    "text": "Integrating with Quarto manuscript writing\n\nUse issue templates to remind you to update the manuscript (e.g., index.qmd)\nMake manuscript updates in the same branch as your analysis code updates\n\ndemo"
+  },
+  {
+    "objectID": "index.html#tips",
+    "href": "index.html#tips",
+    "title": "Reproducible Research with Quarto",
+    "section": "Tips",
+    "text": "Tips\n\nUse Milestones to set deadlines for bundles of issues that accomplish a substantial step\nSet repository rules to require PRs to change your default branch\nUse more complex branching, especially for sub-issues, by branching off an existing main issue branch\n\nPositron setting for how to create new branches githubIssues.workingBaseBranch\n\nIssues can feed into Project views for visualization (e.g., Gantt) and custom attributes (example)\nRemember, issues and PRs are subject to the repository visibility"
+  },
+  {
+    "objectID": "index.html#take-aways",
+    "href": "index.html#take-aways",
+    "title": "Reproducible Research with Quarto",
+    "section": "Take-aways",
+    "text": "Take-aways\n\nGit branches, GitHub issues, and GitHub pull requests\nPositron makes it easy to associate issues with branched code changes\nYou can use issues to break your analysis and drafting into small chunks and manage collaborative work"
   }
 ]
